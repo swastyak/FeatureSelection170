@@ -4,7 +4,7 @@ import numpy as np
 # df: first val row index, 2nd value col index
 
 
-def accuracy():
+def leave_one_out_cross_validation(df, current_set, feature_to_add):
     return random.random()
 
 
@@ -14,8 +14,19 @@ def feature_search_demo(df):
     # print(type(currSetFeatures))
     for i in range(1, row):
         print("On the " + str(i) + " th level of the search tree")
+        global featureToAdd
+        featureToAdd = set()
+        bestAccuracySoFar = 0
         for k in range(1, col):
-            print("Consider expanding the " + str(k) + " feature.")
+            if k not in currSetFeatures:
+                print("Consider expanding the " + str(k) + " feature.")
+                accuracy = leave_one_out_cross_validation(df, currSetFeatures, k+1)
+                if accuracy > bestAccuracySoFar:
+                    bestAccuracySoFar = accuracy
+                    featureToAdd = k
+        # currSetFeatures[i] = featureToAdd
+        currSetFeatures.add(featureToAdd)
+        print("On level " + str(i) + " i added feature " + str(featureToAdd) + " to current set")
     return
 
 
