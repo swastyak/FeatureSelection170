@@ -1,15 +1,20 @@
 import random
 import pandas as pd
 import numpy as np
-# df: first val row index, 2nd value col index
+import csv
+# data: first val row index, 2nd value col index
 
 
-def leave_one_out_cross_validation(df, current_set, feature_to_add):
+def leave_one_out_cross_validation(data, current_set, feature_to_add):
+    row, col = data.shape
+    # for i in range(1, col):
+    #     #     object_to_classify
+    #     print(1)
     return random.random()
 
 
-def feature_search_demo(df):
-    row, col = df.shape
+def feature_search_demo(data):
+    row, col = data.shape
     currSetFeatures = set()
     # print(type(currSetFeatures))
     # for i in range(1, row):
@@ -21,7 +26,7 @@ def feature_search_demo(df):
         for k in range(1, col):
             if k not in currSetFeatures:
                 print("Consider expanding the " + str(k) + " feature.")
-                accuracy = leave_one_out_cross_validation(df, currSetFeatures, k+1)
+                accuracy = leave_one_out_cross_validation(data, currSetFeatures, k+1)
                 if accuracy > bestAccuracySoFar:
                     bestAccuracySoFar = accuracy
                     featureToAdd = k
@@ -42,8 +47,13 @@ def main():
         fileName = defaultSmall
     if fileName == "2":
         fileName = defaultLarge
-    df = pd.read_csv(fileName, delim_whitespace=True, header=None)
-    feature_search_demo(df)
+    # data = csv.reader(fileName, delimiter=' ', skipinitialspace=True)
+
+    data = pd.read_csv(fileName, delim_whitespace=True, header=None).values
+
+    feature_search_demo(data)
+    print(type(data))
+    # print(data)
 
 
 main()
