@@ -1,5 +1,7 @@
 import random
 import pandas as pd
+import numpy as np
+# df: first val row index, 2nd value col index
 
 
 def accuracy():
@@ -7,11 +9,11 @@ def accuracy():
 
 
 def feature_search_demo(df):
-    i, k = df.shape
-    i -= 1
-    k -= 1
-    print(i)
-    print(k)
+    row, col = df.shape
+    for i in range(1, row):
+        print("On the " + str(i) + " th level of the search tree")
+        for k in range(1, col):
+            print("Consider expanding the " + str(k) + " feature.")
     return
 
 
