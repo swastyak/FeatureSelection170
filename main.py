@@ -10,6 +10,8 @@ def accuracy():
 
 def feature_search_demo(df):
     row, col = df.shape
+    currSetFeatures = set()
+    # print(type(currSetFeatures))
     for i in range(1, row):
         print("On the " + str(i) + " th level of the search tree")
         for k in range(1, col):
