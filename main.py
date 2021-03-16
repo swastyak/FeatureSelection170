@@ -46,7 +46,7 @@ def feature_search_demo(data):
     bestAccTotal = 0
     global bestSet
     for i in range(0, col-1):
-        print("On the " + str(i) + " th level of the search tree")
+        print("On the " + str(i) + " th level of the search tree")  # should be i + 1?
         global featureToAdd
         featureToAdd = set()
         bestAccuracySoFar = 0
@@ -72,6 +72,34 @@ def feature_search_demo(data):
 
 
 def feature_backwards_demo(data):
+    row, col = data.shape
+    currSetFeatures = set()
+    for iter in range(1, col):
+        currSetFeatures.add(iter)
+    print(currSetFeatures)
+    bestAccTotal = 0
+    global cBestSet
+    for i in range(col-1, 0, -1):
+        print("On the " + str(i) + " th level of the search tree")  # should be i + 1?
+        global cFeatureToRemove
+        cFeatureToRemove = set()
+        bestAccuracySoFar = 0
+        for k in range(col-1, 0, -1):
+            if k - 1 in currSetFeatures:  # should be in ?
+                print("Consider removing the " + str(k - 1) + " feature.")
+                accuracy = leave_one_out_cross_validation(data, currSetFeatures, k-1)
+                if accuracy > bestAccuracySoFar:
+                    bestAccuracySoFar = accuracy
+                    cFeatureToRemove = k - 1
+        currSetFeatures.remove(cFeatureToRemove)
+        print("On level " + str(i + 1) + " i removed feature " +
+              str(cFeatureToRemove) + " to current set")
+        print(bestAccuracySoFar)
+        if bestAccuracySoFar > bestAccTotal:
+            bestAccTotal = bestAccuracySoFar
+            # cBestSet = copy.deepcopy(currSetFeatures)
+    # print("Best set overall: " + str(cBestSet))
+    print("This set had an accuracy of: " + str(bestAccTotal))
     return
 
 
@@ -79,7 +107,7 @@ def main():
     print("Welcome to Swastyak's Feature Search Algorithm.")
     fileName = input(
         "Type in the name of file to test (1 for small, 2 for large, 3 for special small): \n")
-    typeAlgorithm = input("Type the number of the algo you want to run: \n")
+    typeAlgorithm = input("Type the number of the algo you want to run (1 forward, 2 backward): \n")
     if fileName == "1":
         fileName = "CS170_SMALLtestdata__13.txt"
     if fileName == "2":
