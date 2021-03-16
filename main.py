@@ -65,6 +65,7 @@ def feature_search_demo(data):
         # currSetFeatures[i] = featureToAdd
         currSetFeatures.add(featureToAdd)
         print("On level " + str(i) + " i added feature " + str(featureToAdd) + " to current set")
+        print(bestAccuracySoFar)
     return
 
 
@@ -79,6 +80,8 @@ def main():
         fileName = defaultSmall
     if fileName == "2":
         fileName = defaultLarge
+    if fileName == "3":
+        fileName = "CS170_small_special_testdata__95.txt"
     # data = csv.reader(fileName, delimiter=' ', skipinitialspace=True)
 
     data = pd.read_csv(fileName, delim_whitespace=True, header=None).values
