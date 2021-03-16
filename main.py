@@ -79,21 +79,26 @@ def feature_backwards_demo(data):
     print(currSetFeatures)
     bestAccTotal = 0
     global cBestSet
-    for i in range(col-1, 0, -1):
-        print("On the " + str(i) + " th level of the search tree")  # should be i + 1?
+    for i in range(0, col):
+        print("On the " + str(col - i) + " th level of the search tree")  # should be i + 1?
         global cFeatureToRemove
         cFeatureToRemove = set()
         bestAccuracySoFar = 0
-        for k in range(col-1, 0, -1):
-            if k - 1 in currSetFeatures:  # should be in ?
-                print("Consider removing the " + str(k - 1) + " feature.")
-                accuracy = leave_one_out_cross_validation(data, currSetFeatures, k-1)
+        for k in range(0, col):
+            if k in currSetFeatures:  # should be in ?
+                print("Consider removing the " + str(k) + " feature.")
+                temp_curr = copy.deepcopy(currSetFeatures)
+                temp_curr.remove(k)
+                accuracy = leave_one_out_cross_validation(data, temp_curr, 0)
                 if accuracy > bestAccuracySoFar:
                     bestAccuracySoFar = accuracy
-                    cFeatureToRemove = k - 1
-        currSetFeatures.remove(cFeatureToRemove)
-        print("On level " + str(i + 1) + " i removed feature " +
-              str(cFeatureToRemove) + " to current set")
+                    cFeatureToRemove = k
+        if len(currSetFeatures) != 0:
+            currSetFeatures.remove(cFeatureToRemove)
+            print("On level " + str(col - i) + " i removed feature " +
+                  str(cFeatureToRemove) + " to current set")
+        else:
+            print("Nothing removed anymore")
         print(bestAccuracySoFar)
         if bestAccuracySoFar > bestAccTotal:
             bestAccTotal = bestAccuracySoFar
