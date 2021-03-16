@@ -46,7 +46,7 @@ def feature_search_demo(data):
     bestAccTotal = 0
     global bestSet
     for i in range(0, col-1):
-        print("On the " + str(i) + " th level of the search tree")  # should be i + 1?
+        print("On the " + str(i + 1) + " th level of the search tree")  # should be i + 1?
         global featureToAdd
         featureToAdd = set()
         bestAccuracySoFar = 0
@@ -80,7 +80,7 @@ def feature_backwards_demo(data):
     bestAccTotal = 0
     global cBestSet
     for i in range(0, col):
-        print("On the " + str(col - i) + " th level of the search tree")  # should be i + 1?
+        print("On the " + str(col - i-1) + " th level of the search tree")  # should be i + 1?
         global cFeatureToRemove
         cFeatureToRemove = set()
         bestAccuracySoFar = 0
@@ -95,15 +95,15 @@ def feature_backwards_demo(data):
                     cFeatureToRemove = k
         if len(currSetFeatures) != 0:
             currSetFeatures.remove(cFeatureToRemove)
-            print("On level " + str(col - i) + " i removed feature " +
+            print("On level " + str(col - i-1) + " i removed feature " +
                   str(cFeatureToRemove) + " to current set")
         else:
             print("Nothing removed anymore")
         print(bestAccuracySoFar)
         if bestAccuracySoFar > bestAccTotal:
             bestAccTotal = bestAccuracySoFar
-            # cBestSet = copy.deepcopy(currSetFeatures)
-    # print("Best set overall: " + str(cBestSet))
+            cBestSet = copy.deepcopy(currSetFeatures)
+    print("Best set overall: " + str(cBestSet))
     print("This set had an accuracy of: " + str(bestAccTotal))
     return
 
