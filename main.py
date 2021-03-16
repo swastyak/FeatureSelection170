@@ -2,14 +2,26 @@ import random
 import pandas as pd
 import numpy as np
 import csv
+import copy
+import sys
+
 # data: first val row index, 2nd value col index
 
 
 def leave_one_out_cross_validation(data, current_set, feature_to_add):
+    train_data = copy.deepcopy(data)
     row, col = data.shape
-    # for i in range(1, col):
-    #     #     object_to_classify
-    #     print(1)
+    for i in range(0, row):
+        object_to_classify = train_data[i, 1:]
+        label_object_to_classify = train_data[i, 0]
+        nearest_neighbor_distance = sys.maxsize
+        nearest_neighbor_location = sys.maxsize
+        for k in range(0, row):
+            if i != k:
+                print("Ask if " + str(i) + " is nearest neighbor with " + str(k))
+        # print(object_to_classify)
+        # print("Looping over i, at the " + str(i) + " location.")
+        # print("The " + str(i) + "th object is in class " + str(label_object_to_classify))
     return random.random()
 
 
