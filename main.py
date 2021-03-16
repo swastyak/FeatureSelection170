@@ -5,6 +5,7 @@ import csv
 import copy
 import sys
 import math
+import time
 
 # data: first val row index, 2nd value col index
 
@@ -86,8 +87,11 @@ def main():
     # data = csv.reader(fileName, delimiter=' ', skipinitialspace=True)
 
     data = pd.read_csv(fileName, delim_whitespace=True, header=None).values
-
+    print("Timer will be turned on now.")
+    start_time = time.time()
     feature_search_demo(data)
+    print("Total runtime was " + str(time.time() - start_time) + " seconds.")
+
     # print(data)
 
 
