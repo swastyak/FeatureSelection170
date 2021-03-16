@@ -58,6 +58,7 @@ def feature_search_demo(data):
                     featureToAdd = k + 1
         currSetFeatures.add(featureToAdd)
         print("On level " + str(i + 1) + " i added feature " + str(featureToAdd) + " to current set")
+        print(bestAccuracySoFar)
         # print("This means my current set of features is: " + str(currSetFeatures))
         # print("This is best accuracy so far:" + str(bestAccuracySoFar))
         if bestAccuracySoFar > bestAccTotal:
