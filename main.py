@@ -13,7 +13,7 @@ def leave_one_out_cross_validation(data, current_set, feature_to_add):
     temp_data = copy.deepcopy(data)
     row, col = data.shape
     number_correctly_classified = 0
-    print("Printing current set." + str(current_set))
+    # print("Printing current set." + str(current_set))
     # print("Printing current feature to add." + str(feature_to_add))
 
     for iter in range(1, col):
@@ -42,6 +42,8 @@ def leave_one_out_cross_validation(data, current_set, feature_to_add):
 def feature_search_demo(data):
     row, col = data.shape
     currSetFeatures = set()
+    bestAccTotal = 0
+    global bestSet
     for i in range(0, col-1):
         print("On the " + str(i) + " th level of the search tree")
         global featureToAdd
@@ -56,7 +58,14 @@ def feature_search_demo(data):
                     featureToAdd = k + 1
         currSetFeatures.add(featureToAdd)
         print("On level " + str(i + 1) + " i added feature " + str(featureToAdd) + " to current set")
-        print("This is best accuracy so far:" + str(bestAccuracySoFar))
+        # print("This means my current set of features is: " + str(currSetFeatures))
+        # print("This is best accuracy so far:" + str(bestAccuracySoFar))
+        if bestAccuracySoFar > bestAccTotal:
+            bestAccTotal = bestAccuracySoFar
+            bestSet = copy.deepcopy(currSetFeatures)
+
+    print("Best set overall: " + str(bestSet))
+    print("This set had an accuracy of: " + str(bestAccTotal))
     return
 
 
