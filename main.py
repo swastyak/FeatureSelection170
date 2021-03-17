@@ -54,7 +54,7 @@ def feature_search_demo(data):
         bestAccuracySoFar = 0
         for k in range(0, col-1):
             if k + 1 not in currSetFeatures:
-                print("Consider expanding the " + str(k + 1) + " feature.")
+                # print("Consider expanding the " + str(k + 1) + " feature.")
                 accuracy = leave_one_out_cross_validation(data, currSetFeatures, k+1)
                 if accuracy > bestAccuracySoFar:
                     bestAccuracySoFar = accuracy
@@ -90,7 +90,7 @@ def feature_backwards_demo(data):
         bestAccuracySoFar = 0
         for k in range(0, col):
             if k in currSetFeatures:
-                print("Consider removing the " + str(k) + " feature.")
+                # print("Consider removing the " + str(k) + " feature.")
                 temp_curr = copy.deepcopy(currSetFeatures)
                 temp_curr.remove(k)
                 accuracy = leave_one_out_cross_validation(data, temp_curr, 0)
