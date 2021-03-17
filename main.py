@@ -1,26 +1,24 @@
-import random
 import pandas as pd
 import numpy as np
-import csv
 import copy
 import sys
 import math
 import time
 
-# data: first val row index, 2nd value col index
-
 
 def leave_one_out_cross_validation(data, current_set, feature_to_add):
+    # Make a deep copy since python does shallow copies, but we want to change data
+    # Assign 0s to features not in use, we only want to look at the current features
+    # and the feature we want to add
     temp_data = copy.deepcopy(data)
     row, col = data.shape
     number_correctly_classified = 0
-    # print("Printing current set." + str(current_set))
-    # print("Printing current feature to add." + str(feature_to_add))
 
     for iter in range(1, col):
         if iter not in current_set and iter != feature_to_add:
             temp_data[:, iter] = 0
-
+    # Initialize nearest neighbor to int max, and go down from there
+    # Double loops will go into finding nearest neighbor for validaton
     for i in range(0, row):
         object_to_classify = temp_data[i, 1:]
         label_object_to_classify = temp_data[i, 0]
@@ -36,17 +34,21 @@ def leave_one_out_cross_validation(data, current_set, feature_to_add):
                     nearest_neighbor_label = temp_data[nearest_neighbor_location, 0]
         if label_object_to_classify == nearest_neighbor_label:
             number_correctly_classified += 1
+    # Overall accuracy
     accuracy = number_correctly_classified / row
     return accuracy
 
 
 def feature_search_demo(data):
+    # Forward search function, iterates throguh all elements in the columns (features)
+    # Inner loop lets us see which part has most accurate feature to expand
+    # Then, add that feature to the current set of features
     row, col = data.shape
     currSetFeatures = set()
     bestAccTotal = 0
     global bestSet
     for i in range(0, col-1):
-        print("On the " + str(i + 1) + " th level of the search tree")  # should be i + 1?
+        print("On the " + str(i + 1) + " th level of the search tree")
         global featureToAdd
         featureToAdd = set()
         bestAccuracySoFar = 0
@@ -58,10 +60,11 @@ def feature_search_demo(data):
                     bestAccuracySoFar = accuracy
                     featureToAdd = k + 1
         currSetFeatures.add(featureToAdd)
-        print("On level " + str(i + 1) + " i added feature " + str(featureToAdd) + " to current set")
-        print(bestAccuracySoFar)
-        # print("This means my current set of features is: " + str(currSetFeatures))
-        # print("This is best accuracy so far:" + str(bestAccuracySoFar))
+        # print("On level " + str(i + 1) + " i added feature " + str(featureToAdd) + " to current set")
+        # print("Current set of features is: " + str(currSetFeatures))
+        # print(bestAccuracySoFar)
+        print("Using feature(s) " + str(currSetFeatures) +
+              " accuracy is " + str(bestAccuracySoFar))
         if bestAccuracySoFar > bestAccTotal:
             bestAccTotal = bestAccuracySoFar
             bestSet = copy.deepcopy(currSetFeatures)
@@ -72,6 +75,7 @@ def feature_search_demo(data):
 
 
 def feature_backwards_demo(data):
+    # Same thought process as forward iterations, but you start with a full set
     row, col = data.shape
     currSetFeatures = set()
     for iter in range(1, col):
@@ -80,12 +84,12 @@ def feature_backwards_demo(data):
     bestAccTotal = 0
     global cBestSet
     for i in range(0, col):
-        print("On the " + str(col - i-1) + " th level of the search tree")  # should be i + 1?
+        print("On the " + str(col - i-1) + " th level of the search tree")
         global cFeatureToRemove
         cFeatureToRemove = set()
         bestAccuracySoFar = 0
         for k in range(0, col):
-            if k in currSetFeatures:  # should be in ?
+            if k in currSetFeatures:
                 print("Consider removing the " + str(k) + " feature.")
                 temp_curr = copy.deepcopy(currSetFeatures)
                 temp_curr.remove(k)
@@ -95,11 +99,15 @@ def feature_backwards_demo(data):
                     cFeatureToRemove = k
         if len(currSetFeatures) != 0:
             currSetFeatures.remove(cFeatureToRemove)
-            print("On level " + str(col - i-1) + " i removed feature " +
-                  str(cFeatureToRemove) + " to current set")
+            # print("On level " + str(col - i-1) + " i removed feature " +
+            #       str(cFeatureToRemove) + " from current set")
+            # print("Current set of features is: " + str(currSetFeatures))
+            # print(bestAccuracySoFar)
+            print("Using feature(s) " + str(currSetFeatures) +
+                  " accuracy is " + str(bestAccuracySoFar))
         else:
             print("Nothing removed anymore")
-        print(bestAccuracySoFar)
+        # print(bestAccuracySoFar)
         if bestAccuracySoFar > bestAccTotal:
             bestAccTotal = bestAccuracySoFar
             cBestSet = copy.deepcopy(currSetFeatures)
@@ -119,7 +127,6 @@ def main():
         fileName = "CS170_largetestdata__66.txt"
     if fileName == "3":
         fileName = "CS170_small_special_testdata__95.txt"
-    # data = csv.reader(fileName, delimiter=' ', skipinitialspace=True)
     print("Going to read " + fileName)
     data = pd.read_csv(fileName, delim_whitespace=True, header=None).values
     print("Timer will be turned on now.")
@@ -129,8 +136,6 @@ def main():
     else:
         feature_backwards_demo(data)
     print("Total runtime was " + str(time.time() - start_time) + " seconds.")
-
-    # print(data)
 
 
 main()
