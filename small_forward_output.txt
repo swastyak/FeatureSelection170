@@ -1,0 +1,86 @@
+Welcome to Swastyak's Feature Search Algorithm.
+Type in the name of file to test (defaults: 1 for small, 2 for large, 3 for special small):
+1
+Type the number of the algo you want to run (1 forward, 2 backward):
+1
+Going to read CS170_SMALLtestdata__13.txt
+Timer will be turned on now.
+Using feature(s) set() accuracy is 0.82
+On the 1 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.67.
+Consider expanding the 2 feature. Accuracy now will be 0.8266666666666667.
+Consider expanding the 3 feature. Accuracy now will be 0.6966666666666667.
+Consider expanding the 4 feature. Accuracy now will be 0.7266666666666667.
+Consider expanding the 5 feature. Accuracy now will be 0.7466666666666667.
+Consider expanding the 6 feature. Accuracy now will be 0.6866666666666666.
+Consider expanding the 7 feature. Accuracy now will be 0.7066666666666667.
+Consider expanding the 8 feature. Accuracy now will be 0.6833333333333333.
+Consider expanding the 9 feature. Accuracy now will be 0.7033333333333334.
+Consider expanding the 10 feature. Accuracy now will be 0.6666666666666666.
+Using feature(s) {2} accuracy is 0.8266666666666667
+On the 2 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.82.
+Consider expanding the 3 feature. Accuracy now will be 0.9733333333333334.
+Consider expanding the 4 feature. Accuracy now will be 0.8666666666666667.
+Consider expanding the 5 feature. Accuracy now will be 0.8466666666666667.
+Consider expanding the 6 feature. Accuracy now will be 0.8933333333333333.
+Consider expanding the 7 feature. Accuracy now will be 0.85.
+Consider expanding the 8 feature. Accuracy now will be 0.8566666666666667.
+Consider expanding the 9 feature. Accuracy now will be 0.82.
+Consider expanding the 10 feature. Accuracy now will be 0.85.
+Using feature(s) {2, 3} accuracy is 0.9733333333333334
+On the 3 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.9066666666666666.
+Consider expanding the 4 feature. Accuracy now will be 0.91.
+Consider expanding the 5 feature. Accuracy now will be 0.9266666666666666.
+Consider expanding the 6 feature. Accuracy now will be 0.9366666666666666.
+Consider expanding the 7 feature. Accuracy now will be 0.89.
+Consider expanding the 8 feature. Accuracy now will be 0.95.
+Consider expanding the 9 feature. Accuracy now will be 0.8866666666666667.
+Consider expanding the 10 feature. Accuracy now will be 0.9133333333333333.
+Using feature(s) {8, 2, 3} accuracy is 0.95
+On the 4 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.88.
+Consider expanding the 4 feature. Accuracy now will be 0.8866666666666667.
+Consider expanding the 5 feature. Accuracy now will be 0.8866666666666667.
+Consider expanding the 6 feature. Accuracy now will be 0.8666666666666667.
+Consider expanding the 7 feature. Accuracy now will be 0.87.
+Consider expanding the 9 feature. Accuracy now will be 0.8833333333333333.
+Consider expanding the 10 feature. Accuracy now will be 0.8566666666666667.
+Using feature(s) {8, 2, 3, 4} accuracy is 0.8866666666666667
+On the 5 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.86.
+Consider expanding the 5 feature. Accuracy now will be 0.85.
+Consider expanding the 6 feature. Accuracy now will be 0.8933333333333333.
+Consider expanding the 7 feature. Accuracy now will be 0.8533333333333334.
+Consider expanding the 9 feature. Accuracy now will be 0.8566666666666667.
+Consider expanding the 10 feature. Accuracy now will be 0.87.
+Using feature(s) {2, 3, 4, 6, 8} accuracy is 0.8933333333333333
+On the 6 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.8166666666666667.
+Consider expanding the 5 feature. Accuracy now will be 0.85.
+Consider expanding the 7 feature. Accuracy now will be 0.8266666666666667.
+Consider expanding the 9 feature. Accuracy now will be 0.82.
+Consider expanding the 10 feature. Accuracy now will be 0.81.
+Using feature(s) {2, 3, 4, 5, 6, 8} accuracy is 0.85
+On the 7 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.81.
+Consider expanding the 7 feature. Accuracy now will be 0.8133333333333334.
+Consider expanding the 9 feature. Accuracy now will be 0.79.
+Consider expanding the 10 feature. Accuracy now will be 0.8033333333333333.
+Using feature(s) {2, 3, 4, 5, 6, 7, 8} accuracy is 0.8133333333333334
+On the 8 th level of the search tree
+Consider expanding the 1 feature. Accuracy now will be 0.7966666666666666.
+Consider expanding the 9 feature. Accuracy now will be 0.75.
+Consider expanding the 10 feature. Accuracy now will be 0.7433333333333333.
+Using feature(s) {1, 2, 3, 4, 5, 6, 7, 8} accuracy is 0.7966666666666666
+On the 9 th level of the search tree
+Consider expanding the 9 feature. Accuracy now will be 0.7133333333333334.
+Consider expanding the 10 feature. Accuracy now will be 0.7566666666666667.
+Using feature(s) {1, 2, 3, 4, 5, 6, 7, 8, 10} accuracy is 0.7566666666666667
+On the 10 th level of the search tree
+Consider expanding the 9 feature. Accuracy now will be 0.7066666666666667.
+Using feature(s) {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} accuracy is 0.7066666666666667
+Best set overall: {2, 3}
+This set had an accuracy of: 0.9733333333333334
+Total runtime was 26.537625074386597 seconds.

@@ -1,0 +1,89 @@
+Welcome to Swastyak's Feature Search Algorithm.
+Type in the name of file to test (defaults: 1 for small, 2 for large, 3 for special small):
+1
+Type the number of the algo you want to run (1 forward, 2 backward):
+2
+Going to read CS170_SMALLtestdata__13.txt
+Timer will be turned on now.
+Using feature(s) {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} accuracy is 0.7066666666666667
+On the 10 th level of the search tree
+Consider removing the 1 feature. Accuracy is 0.7166666666666667.
+Consider removing the 2 feature. Accuracy is 0.6633333333333333.
+Consider removing the 3 feature. Accuracy is 0.7166666666666667.
+Consider removing the 4 feature. Accuracy is 0.7466666666666667.
+Consider removing the 5 feature. Accuracy is 0.7333333333333333.
+Consider removing the 6 feature. Accuracy is 0.7466666666666667.
+Consider removing the 7 feature. Accuracy is 0.7333333333333333.
+Consider removing the 8 feature. Accuracy is 0.7533333333333333.
+Consider removing the 9 feature. Accuracy is 0.7566666666666667.
+Consider removing the 10 feature. Accuracy is 0.7133333333333334.
+Using feature(s) {1, 2, 3, 4, 5, 6, 7, 8, 10} accuracy is 0.7566666666666667
+On the 9 th level of the search tree
+Consider removing the 1 feature. Accuracy is 0.7433333333333333.
+Consider removing the 2 feature. Accuracy is 0.6933333333333334.
+Consider removing the 3 feature. Accuracy is 0.7433333333333333.
+Consider removing the 4 feature. Accuracy is 0.7633333333333333.
+Consider removing the 5 feature. Accuracy is 0.7766666666666666.
+Consider removing the 6 feature. Accuracy is 0.7566666666666667.
+Consider removing the 7 feature. Accuracy is 0.7766666666666666.
+Consider removing the 8 feature. Accuracy is 0.75.
+Consider removing the 10 feature. Accuracy is 0.7966666666666666.
+Using feature(s) {1, 2, 3, 4, 5, 6, 7, 8} accuracy is 0.7966666666666666
+On the 8 th level of the search tree
+Consider removing the 1 feature. Accuracy is 0.8133333333333334.
+Consider removing the 2 feature. Accuracy is 0.7233333333333334.
+Consider removing the 3 feature. Accuracy is 0.7666666666666667.
+Consider removing the 4 feature. Accuracy is 0.77.
+Consider removing the 5 feature. Accuracy is 0.76.
+Consider removing the 6 feature. Accuracy is 0.7666666666666667.
+Consider removing the 7 feature. Accuracy is 0.81.
+Consider removing the 8 feature. Accuracy is 0.7933333333333333.
+Using feature(s) {2, 3, 4, 5, 6, 7, 8} accuracy is 0.8133333333333334
+On the 7 th level of the search tree
+Consider removing the 2 feature. Accuracy is 0.72.
+Consider removing the 3 feature. Accuracy is 0.75.
+Consider removing the 4 feature. Accuracy is 0.7966666666666666.
+Consider removing the 5 feature. Accuracy is 0.8266666666666667.
+Consider removing the 6 feature. Accuracy is 0.77.
+Consider removing the 7 feature. Accuracy is 0.85.
+Consider removing the 8 feature. Accuracy is 0.8.
+Using feature(s) {2, 3, 4, 5, 6, 8} accuracy is 0.85
+On the 6 th level of the search tree
+Consider removing the 2 feature. Accuracy is 0.77.
+Consider removing the 3 feature. Accuracy is 0.78.
+Consider removing the 4 feature. Accuracy is 0.82.
+Consider removing the 5 feature. Accuracy is 0.8933333333333333.
+Consider removing the 6 feature. Accuracy is 0.85.
+Consider removing the 8 feature. Accuracy is 0.8466666666666667.
+Using feature(s) {2, 3, 4, 6, 8} accuracy is 0.8933333333333333
+On the 5 th level of the search tree
+On the 5 th level of the search tree
+Consider removing the 2 feature. Accuracy is 0.76.
+Consider removing the 3 feature. Accuracy is 0.8333333333333334.
+Consider removing the 4 feature. Accuracy is 0.8666666666666667.
+Consider removing the 6 feature. Accuracy is 0.8866666666666667.
+Consider removing the 8 feature. Accuracy is 0.8733333333333333.
+Using feature(s) {2, 3, 4, 8} accuracy is 0.8866666666666667
+On the 4 th level of the search tree
+Consider removing the 2 feature. Accuracy is 0.78.
+Consider removing the 3 feature. Accuracy is 0.8366666666666667.
+Consider removing the 4 feature. Accuracy is 0.95.
+Consider removing the 8 feature. Accuracy is 0.91.
+Using feature(s) {2, 3, 8} accuracy is 0.95
+On the 3 th level of the search tree
+Consider removing the 2 feature. Accuracy is 0.7666666666666667.
+Consider removing the 3 feature. Accuracy is 0.8566666666666667.
+Consider removing the 8 feature. Accuracy is 0.9733333333333334.
+Using feature(s) {2, 3} accuracy is 0.9733333333333334
+On the 2 th level of the search tree
+Consider removing the 2 feature. Accuracy is 0.6966666666666667.
+Consider removing the 3 feature. Accuracy is 0.8266666666666667.
+Using feature(s) {2} accuracy is 0.8266666666666667
+On the 1 th level of the search tree
+Consider removing the 2 feature. Accuracy is 0.82.
+Using feature(s) set() accuracy is 0.82
+On the 0 th level of the search tree
+Nothing removed anymore
+Best set overall: {2, 3}
+This set had an accuracy of: 0.9733333333333334
+Total runtime was 28.163312911987305 seconds.
