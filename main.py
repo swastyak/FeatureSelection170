@@ -45,6 +45,8 @@ def feature_search_demo(data):
     # Then, add that feature to the current set of features
     row, col = data.shape
     currSetFeatures = set()
+    print("Using feature(s) " + str(currSetFeatures) +
+          " accuracy is " + str(leave_one_out_cross_validation(data, currSetFeatures, 0)))
     bestAccTotal = 0
     global bestSet
     for i in range(0, col-1):
@@ -80,7 +82,8 @@ def feature_backwards_demo(data):
     currSetFeatures = set()
     for iter in range(1, col):
         currSetFeatures.add(iter)
-    print(currSetFeatures)
+    print("Using feature(s) " + str(currSetFeatures) +
+          " accuracy is " + str(leave_one_out_cross_validation(data, currSetFeatures, 0)))
     bestAccTotal = 0
     global cBestSet
     for i in range(0, col):
