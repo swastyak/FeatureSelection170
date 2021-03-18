@@ -18,7 +18,9 @@ def leave_one_out_cross_validation(data, current_set, feature_to_add):
         if iter not in current_set and iter != feature_to_add:
             temp_data[:, iter] = 0
     # Initialize nearest neighbor to int max, and go down from there
-    # Double loops will go into finding nearest neighbor for validaton
+    # Nearest neighbor found using euclidean distance from object i to all neighbors k
+    # Hence, the nested loops
+    # Ask if i is closest to object a, b, c, etc, pretty much every object but it's self
     for i in range(0, row):
         object_to_classify = temp_data[i, 1:]
         label_object_to_classify = temp_data[i, 0]
@@ -34,15 +36,19 @@ def leave_one_out_cross_validation(data, current_set, feature_to_add):
                     nearest_neighbor_label = temp_data[nearest_neighbor_location, 0]
         if label_object_to_classify == nearest_neighbor_label:
             number_correctly_classified += 1
-    # Overall accuracy
+    # Overall accuracy of node returned
     accuracy = number_correctly_classified / row
     return accuracy
 
 
 def feature_search_demo(data):
-    # Forward search function, iterates throguh all elements in the columns (features)
-    # Inner loop lets us see which part has most accurate feature to expand
-    # Then, add that feature to the current set of features
+    # Forward search function, iterates through all elements in the columns (features)
+    # Outer loop: "step" down the search tree
+    # Inner loop: consider adding every possible feature that i'th feature can expand to
+    # Then, the best feature addition is added to the current set of features
+    # Best feature is found by computing accuracy of every possible node expansion
+    # Highest node expansion path is taken
+    # Once a feature is added to current set of features, we don't add it again
     row, col = data.shape
     currSetFeatures = set()
     print("Using feature(s) " + str(currSetFeatures) +
@@ -56,15 +62,11 @@ def feature_search_demo(data):
         bestAccuracySoFar = 0
         for k in range(0, col-1):
             if k + 1 not in currSetFeatures:
-                # print("Consider expanding the " + str(k + 1) + " feature.")
                 accuracy = leave_one_out_cross_validation(data, currSetFeatures, k+1)
                 if accuracy > bestAccuracySoFar:
                     bestAccuracySoFar = accuracy
                     featureToAdd = k + 1
         currSetFeatures.add(featureToAdd)
-        # print("On level " + str(i + 1) + " i added feature " + str(featureToAdd) + " to current set")
-        # print("Current set of features is: " + str(currSetFeatures))
-        # print(bestAccuracySoFar)
         print("Using feature(s) " + str(currSetFeatures) +
               " accuracy is " + str(bestAccuracySoFar))
         if bestAccuracySoFar > bestAccTotal:
@@ -77,7 +79,8 @@ def feature_search_demo(data):
 
 
 def feature_backwards_demo(data):
-    # Same thought process as forward iterations, but you start with a full set
+    # Similar thought process as forward iterations, but you start with a full set
+    # "Perculate upwards through the search space"
     row, col = data.shape
     currSetFeatures = set()
     for iter in range(1, col):
@@ -93,7 +96,6 @@ def feature_backwards_demo(data):
         bestAccuracySoFar = 0
         for k in range(0, col):
             if k in currSetFeatures:
-                # print("Consider removing the " + str(k) + " feature.")
                 temp_curr = copy.deepcopy(currSetFeatures)
                 temp_curr.remove(k)
                 accuracy = leave_one_out_cross_validation(data, temp_curr, 0)
@@ -102,15 +104,10 @@ def feature_backwards_demo(data):
                     cFeatureToRemove = k
         if len(currSetFeatures) != 0:
             currSetFeatures.remove(cFeatureToRemove)
-            # print("On level " + str(col - i-1) + " i removed feature " +
-            #       str(cFeatureToRemove) + " from current set")
-            # print("Current set of features is: " + str(currSetFeatures))
-            # print(bestAccuracySoFar)
             print("Using feature(s) " + str(currSetFeatures) +
                   " accuracy is " + str(bestAccuracySoFar))
         else:
             print("Nothing removed anymore")
-        # print(bestAccuracySoFar)
         if bestAccuracySoFar > bestAccTotal:
             bestAccTotal = bestAccuracySoFar
             cBestSet = copy.deepcopy(currSetFeatures)
@@ -120,9 +117,12 @@ def feature_backwards_demo(data):
 
 
 def main():
+    # Driver code
+    # Using files 13 and 66 are default
+    # Else you can enter your own file name as long as file exists in directory
     print("Welcome to Swastyak's Feature Search Algorithm.")
     fileName = input(
-        "Type in the name of file to test (1 for small, 2 for large, 3 for special small): \n")
+        "Type in the name of file to test (defaults: 1 for small, 2 for large, 3 for special small): \n")
     typeAlgorithm = input("Type the number of the algo you want to run (1 forward, 2 backward): \n")
     if fileName == "1":
         fileName = "CS170_SMALLtestdata__13.txt"
